@@ -8,13 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = .camera
+        
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        self.present(self.imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    // CAMERA PERMISSIONS - add to plist Privacy - Camera Usage Description
 
 }
 
